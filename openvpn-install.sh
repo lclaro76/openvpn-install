@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Secure OpenVPN server installer for Debian, Ubuntu, CentOS, Fedora and Arch Linux
+# Secure OpenVPN server installer for Debian, Ubuntu, CentOS, Fedora, Arch Linux and Gentoo
 # https://github.com/angristan/openvpn-install
 
 function isRoot () {
@@ -50,6 +50,9 @@ function checkOS () {
 				fi
 			fi
 		fi
+		elif [ "$ID" == "Gentoo" ]];then
+			OS="gentoo"		
+		fi
 	elif [[ -e /etc/fedora-release ]]; then
 		OS=fedora
 	elif [[ -e /etc/centos-release ]]; then
@@ -70,7 +73,7 @@ function checkOS () {
 	elif [[ -e /etc/arch-release ]]; then
 		OS=arch
 	else
-		echo "Looks like you aren't running this installer on a Debian, Ubuntu, Fedora, CentOS or Arch Linux system"
+		echo "Looks like you aren't running this installer on a Debian, Ubuntu, Fedora, CentOS, Arch or Gentoo Linux system"
 		exit 1
 	fi
 }
